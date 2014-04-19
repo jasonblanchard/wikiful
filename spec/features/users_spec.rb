@@ -2,8 +2,10 @@ require 'spec_helper'
 
 feature 'Users' do
 
+  let(:user) { FactoryGirl.create(:user) }
+
   scenario 'As a curious author I want to be able to sign pu' do
-    visit new_user_path
+    visit signup_path
 
     fill_in 'user_email', :with => "test@example.com"
     fill_in 'user_name', :with => "test"
@@ -15,7 +17,7 @@ feature 'Users' do
   end
 
   scenario 'As a curious author I want to see errors when the signup form fails' do
-    visit new_user_path
+    visit signup_path
 
     fill_in 'user_email', :with => "test@example.com"
     fill_in 'user_name', :with => "test"
@@ -25,6 +27,23 @@ feature 'Users' do
   end
 
   scenario 'As an Author I want to be able to log in' do
-    skip
+    visit login_path
+
+    fill_in 'email', :with => user.email
+    fill_in 'password', :with => user.password
+    click_button 'Login'
+
+    expect(page.body).to have_content "Logged in"
+  end
+
+  scenario 'As an Author I want to get a message when my login fails' do
+    visit login_path
+
+    fill_in 'email', :with => user.email
+    fill_in 'password', :with => 'cats'
+    click_button 'Login'
+
+    expect(page.body).to have_content "Email or password is invalid"
+
   end
 end
