@@ -40,4 +40,5 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+  config.deprecation_stream = File.open('tmp/rspec_deprecations.txt','w')
 end
