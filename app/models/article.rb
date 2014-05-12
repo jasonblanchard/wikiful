@@ -7,4 +7,6 @@ class Article < ActiveRecord::Base
   validates :content, :presence => true
   validates :categories, :presence => true
 
+  scope :recent, lambda { order(:updated_at => :desc) }
+
 end

@@ -1,6 +1,7 @@
 Wikiful::Application.routes.draw do
-  get "sessions/new"
   root 'welcome#index'
+
+  resources :articles
 
   resource :user, only: [:create]
   resource :session, only: [:create]
