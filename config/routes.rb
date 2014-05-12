@@ -1,4 +1,6 @@
 Wikiful::Application.routes.draw do
+  get "categories/show"
+  get "categories/index"
   root 'welcome#index'
 
   resources :articles
