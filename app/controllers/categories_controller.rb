@@ -1,7 +1,10 @@
 class CategoriesController < ApplicationController
-  def show
+  def index
+    @categories = Category.alphabetized
   end
 
-  def index
+  def show
+    @category = Category.find(params[:id])
+    @articles = @category.articles.recent
   end
 end

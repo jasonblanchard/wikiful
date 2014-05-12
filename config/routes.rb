@@ -1,9 +1,8 @@
 Wikiful::Application.routes.draw do
-  get "categories/show"
-  get "categories/index"
   root 'welcome#index'
 
   resources :articles
+  resources :categories
 
   resource :user, only: [:create]
   resource :session, only: [:create]
