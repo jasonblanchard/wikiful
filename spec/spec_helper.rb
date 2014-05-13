@@ -41,4 +41,5 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.deprecation_stream = File.open('tmp/rspec_deprecations.txt','w')
+  config.include UsersHelper
 end
