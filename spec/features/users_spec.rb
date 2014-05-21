@@ -4,7 +4,7 @@ feature 'Users' do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  scenario 'As a curious author I want to be able to sign pu' do
+  scenario 'As a curious author I want to be able to sign pu', :js => true do
     visit signup_path
 
     fill_in 'user_email', :with => "test@example.com"
@@ -12,7 +12,7 @@ feature 'Users' do
     fill_in 'user_password', :with => "testpass"
     fill_in 'user_password_confirmation', :with => "testpass"
     click_button "Create User"
-    
+
     expect(page.body).to have_content "Thank you for signing up"
   end
 
